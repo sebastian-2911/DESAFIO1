@@ -137,7 +137,26 @@ int* generar_pieza_L(int columnas_tablero, int estado_rotacion) {
         return filas;
     }
 }
+int* generar_pieza_I(int columnas_tablero, int estado_rotacion) {
+    int centro = columnas_tablero / 2;
+    int* filas;
 
+    if (estado_rotacion == 2) { // I acostada (Alto: 1)
+        filas = new int[1];
+        // 15 en binario es 1111
+        filas[0] = (15 << (centro - 2)); // Una sola fila con 4 bits centrados
+        return filas;
+    }
+    else { // I parada (Alto: 4)
+        filas = new int[4];
+        // Un solo bit (1) repetido en 4 filas para hacer la línea vertical
+        filas[0] = (1 << centro);
+        filas[1] = (1 << centro);
+        filas[2] = (1 << centro);
+        filas[3] = (1 << centro);
+        return filas;
+    }
+}
 int main()
 {
     int filas, columnas;
