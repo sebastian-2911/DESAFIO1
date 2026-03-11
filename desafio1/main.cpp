@@ -112,7 +112,7 @@ int* generar_pieza_Z(int columnas_tablero, int estado_rotacion) {
         filas[2] = (1 << (centro - 1)); // #.
         return filas;
     }
-}// funcionan todas menos esta por ahora
+}
 int* generar_pieza_L(int columnas_tablero, int estado_rotacion) {
     int centro = columnas_tablero / 2;
     int* filas;
@@ -134,6 +134,30 @@ int* generar_pieza_L(int columnas_tablero, int estado_rotacion) {
         filas[0] = (7 << (centro - 1)); // # # #
         // El 1 es '#' en binario. Lo movemos al extremo izquierdo del 7
         filas[1] = (1 << (centro + 1)); // # . .
+        return filas;
+    }
+}
+int* generar_pieza_J(int columnas_tablero, int estado_rotacion) {
+    int centro = columnas_tablero / 2;
+    int* filas;
+
+    if (estado_rotacion == 1) {
+        // POSICIÓN 1: VERTICAL (Alto: 3 filas)
+        filas = new int[3];
+
+        filas[0] = (1 << centro);       // . #
+        filas[1] = (1 << centro);       // . #
+        filas[2] = (3 << centro);       // # # (El gancho hacia el otro lado)
+        return filas;
+    }
+    else {
+        // POSICIÓN 2: ACOSTADA
+        filas = new int[2];
+
+        // El 7 es '111'
+        filas[0] = (7 << (centro - 1)); // # # #
+        // El 1 ahora va al extremo derecho de la barra
+        filas[1] = (1 << (centro - 1)); // . . #
         return filas;
     }
 }
