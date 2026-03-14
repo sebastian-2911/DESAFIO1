@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(desafio1 main.cpp
     funciones.h funciones.cpp
+    figuras.h figuras.cpp
 
 )
 
