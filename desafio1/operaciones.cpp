@@ -551,7 +551,29 @@ void calcular_movimientos_disponibles(int** tablero, int filas, int columnas,
                                       bool &puede_derecha,
                                       bool &puede_rotar_mov,
                                       bool &puede_bajar)
-{
+{// Determina qué movimientos están disponibles para la pieza en su estado actual.
+    //
+    // Procedimiento:
+    // 1. Elimina temporalmente la pieza del tablero para evitar auto-colisiones.
+    // 2. Verifica el movimiento izquierdo considerando bloqueo, frontera y colisión.
+    // 3. Verifica el movimiento derecho considerando bloqueo, frontera y colisión.
+    // 4. Verifica si la pieza puede seguir bajando.
+    // 5. Verifica si la siguiente rotación es válida y no genera colisión.
+    // 6. Vuelve a dibujar la pieza en su posición original.
+    //
+    // Parámetros:
+    // - tablero: matriz del juego.
+    // - filas, columnas: dimensiones del tablero.
+    // - pieza: arreglo de la pieza actual.
+    // - alto_pieza: altura de la pieza.
+    // - fila_actual: posición vertical de la pieza.
+    // - tipo: tipo de pieza.
+    // - estado_rotacion: rotación actual.
+    // - rotaciones_usadas: rotaciones ya realizadas.
+    // - desplazamiento: posición horizontal acumulada.
+    // - bloqueo_izquierda, bloqueo_derecha: restricciones de movimiento lateral.
+    // - puede_izquierda, puede_derecha, puede_rotar_mov, puede_bajar: resultados (salida).
+
     puede_izquierda = false;
     puede_derecha = false;
     puede_rotar_mov = false;
